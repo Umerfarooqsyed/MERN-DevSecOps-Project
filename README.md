@@ -1,43 +1,57 @@
-Wanderlust – DevOps Implementation
-📌 About This Application
+# 🌍 Wanderlust Application – DevOps Project  
 
-Wanderlust is a full-stack MERN (MongoDB, Express, React, Node.js) application designed for managing and exploring travel destinations, user bookings, and reviews. The app provides both a frontend (React) for users and a backend (Node/Express + MongoDB) for API services.
+## 📌 About This Application  
+**Wanderlust** is a full-stack **MERN (MongoDB, Express, React, Node.js)** application built for exploring and managing travel destinations, bookings, and reviews.  
 
-👨‍💻 My Role in This Project
+- **Frontend** → React (user interface)  
+- **Backend** → Node.js + Express (API services)  
+- **Database** → MongoDB  
 
-I am leveraging this application to demonstrate modern DevOps practices in a real-world scenario.
-My work on this project focuses on:
+This project provides a complete real-world application setup, making it an excellent foundation for implementing **DevOps workflows and cloud-native practices**.  
 
-🐳 Containerization with Docker
+👉 Original application codebase: [krishnaacharyaa/wanderlust](https://github.com/krishnaacharyaa/wanderlust/)  
 
-🔄 End-to-End CI/CD pipelines (GitHub Actions / Jenkins / Azure DevOps)
+---
 
-☁️ Cloud-Native Deployment strategies
+## My Role in This Project  
+I am **not the original developer** of this app. Instead, I am leveraging this project as a real-world case study for DevOps practices.My work focuses on implementing production-grade DevOps workflows, including:
 
-📊 Automation & Monitoring for reliability
+- 🐳 **Containerization** → Dockerizing the full-stack application  
+- 🔄 **CI/CD Pipelines** → GitHub Actions / Jenkins / Azure DevOps  
+- ☁️ **Cloud Deployment** → Deploying to cloud platforms (AWS, Azure, GCP)  
+- 📊 **Automation & Monitoring** → Ensuring scalability, reliability & observability  
 
-This project is an excellent foundation for implementing DevOps workflows, and I am using it to showcase production-grade DevOps skills rather than application development.
+This project demonstrates **production-grade DevOps practices**—focusing on infrastructure, automation, and deployment pipelines rather than application development.  
 
-⚠️ Important Note
+---
 
-The application codebase was originally created by another contributor (source: wanderlust repo).
-I am using it to design, implement, and optimize DevOps pipelines and deployment workflows, ensuring it follows industry best practices.
+## ⚙️ Tech Stack & Tools  
 
-## 🛠️ Tech Stack  
+**Application Layer:**  
+- React (Frontend)  
+- Node.js + Express (Backend)  
+- MongoDB (Database)  
 
-### Frontend  
-- ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
+**DevOps Layer:**  
+- Docker (Containerization) 
+- Jenkins (CI/CD)  
+- Infrastructure setup
+- Deployment on local/Cloud 
 
-### Backend  
-- ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)  
-- ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)  
+---
 
-### Database  
-- ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)  
+## 🚀 What This Project Demonstrates  
+✅ Containerizing a MERN application  
+✅ Designing **end-to-end CI/CD pipelines**  
+✅ Deploying applications to the cloud with **best practices**  
+✅ Implementing **automation & monitoring** for reliability  
 
-### DevOps & Cloud  
-- ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)  
-- ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)  
-- ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)  
-- ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)  
+---
 
+## ⚠️ Important Note  
+The **application code** belongs to the original repository → [krishnaacharyaa/wanderlust](https://github.com/krishnaacharyaa/wanderlust/).  
+My contribution lies in **DevOps implementation**—designing, optimizing, and automating the build, test, and deployment workflows.  
+
+---
+
+✨ This project is part of my **DevOps journey**, showcasing how I apply **modern DevOps strategies on real-world applications**.  
