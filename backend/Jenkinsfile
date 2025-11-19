@@ -1,0 +1,77 @@
+pipeline{
+  agent any
+
+  stages{
+    stage('Cleaning workspace'){
+      steps{
+        script{
+          cleanWorkspace()
+        }
+      }
+    }
+    stage('Cloning code from repo'){
+      steps{
+        script{
+          gitClone("https://github.com/Umerfarooqsyed/MERN-DevSecOps-Project.git","main")
+        }
+      }
+    }
+    stage('OWASP dependency check'){
+      steps{
+        script{
+          owaspDependencyCheck("frontend")
+        }
+      }
+    }
+    stage('SonarQube Static Code Analysis'){
+      steps{
+        script{
+          sonarQubeCodeAnalysis("nodejs","frontend","frontend","<PUT SONAR SERVER URL HERE>")
+        }
+      }
+    }
+    stage('SonarQube Code Quality Gate Check'){
+      steps{
+        script{
+          sonarQubeQualityGate()
+        }
+      }
+    }
+    stage('trivyFsScan'){
+      steps{
+        script{
+          trivyFsScan("backend","backend-trivyfs-report.json")
+        }
+      }
+    }
+    stage('building docker image'){
+      steps{
+        script{
+          dockerBuild("umerfarooqsyed/mern-devsecops-project","backend-Version-${env.BUILD_NUMBER}")
+        }
+      }
+    }
+    stage('pushing new image to docker hub'){
+      steps{
+        script{
+          dockerPush("umerfarooqsyed/mern-devsecops-project","backend-Version-${env.BUILD_NUMBER}")
+        }
+      }
+    }
+    stage('updating new image version on kubernetes manifest files'){
+      environment {
+        GITHUB_TOKEN= credentials('github-token')
+        GIT_USER_NAME= "Umerfarooqsyed"
+        GIT_USER_EMAIL= "umerfarooqsyed18@gmail.com"
+        GIT_REPO_NAME= "MERN-DevSecOps-Project"
+        LATEST_IMAGE= "umerfarooqsyed/mern-devsecops-project:frontend-Version-${env.BUILD_NUMBER}"
+    }
+      steps{
+        sh '''
+        chmod +x /scripts/update-k8s-manifest.sh
+        ./update-k8s-manifest.sh backend
+        '''
+      }
+    }
+  }
+}
