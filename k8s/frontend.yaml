@@ -7,17 +7,17 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: wanderlust
+      app: frontend
   template:
     metadata:
       labels:
-        app: wanderlust
+        app: frontend
     spec:
       containers:
-      - name: wanderlust-app
+      - name: frontend-container
         image: umerfarooqsyed/mern-devsecops-project:latestImageVersion
         ports:
-        - containerPort: 5173
+        - containerPort: 80
 
 ---
 apiVersion: v1
