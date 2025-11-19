@@ -1,0 +1,36 @@
+Kind: Deployment
+apiVersion: apps/v1
+metadata: 
+  name: backend-deployment
+  namespace: wanderlust
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend-container
+        image: umerfarooqsyed/mern-devsecops-project:latestImageVersion
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: wanderlust
+spec:
+  type: NodePort
+  selector:
+    app: backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 31100
