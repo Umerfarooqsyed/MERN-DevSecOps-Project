@@ -11,7 +11,6 @@ GIT_USER_EMAIL=***********
 GIT_REPO_NAME=***********
 GIT_REPO_OWNER=***********
 LATEST_IMAGE=***********
-TAG=${BUILD_NUMBER}   # Jenkins automatically provides BUILD_NUMBER
 
 # Define GitHub repo URL using token
 REPO_URL="https://${GITHUB_TOKEN}@github.com/${GIT_REPO_OWNER}/${GIT_REPO_NAME}.git"
@@ -26,9 +25,12 @@ cd /tmp/temp_repo
 git config user.name "$GIT_USER_NAME"
 git config user.email "$GIT_USER_EMAIL"
 
+
+ARGUMENT=$1 # Make sure to put <microservice>.yaml folder name as argument after update-k8s-manifests.sh in pipeline
+
 # Update image tag in Kubernetes manifest
 # (Example: update the "image:" line in k8s/deployment.yaml)
-sed -i "s|image:.*|image: ${LATEST_IMAGE}|g" k8s/deployment.yaml
+sed -i "s|image:.*|image: ${LATEST_IMAGE}|g" k8s/$ARGUMENT.yaml
 
 # Add, commit, and push the change
 git add .
