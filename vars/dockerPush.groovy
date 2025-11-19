@@ -1,5 +1,5 @@
-def call(String ImageName, String ImageTag, String credsId){
-    withCredentials([usernamePassword(credentialsId: credsId, usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+def call(String ImageName, String ImageTag){
+    withCredentials([usernamePassword(credentialsId: 'docker-login-cred', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
         sh "docker login -u ${USER} -p ${PASS}"
         sh "docker push ${ImageName}:${ImageTag}"
     }
