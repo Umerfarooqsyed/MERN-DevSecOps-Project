@@ -1,13 +1,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mongodb-pv
-  namespace: wanderlust
+  name: mongodb-pv       
 spec:
   capacity:
-    storage: 1Gi
-  volumeMode: Filesystem
+    storage: 2Gi            
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /data/db
+    - ReadWriteOnce         
+  storageClassName: azure-disk   
+  persistentVolumeReclaimPolicy: Retain   
+  azureDisk:
+    kind: Managed
+    diskName: wanderlust-AzureDisk    
+    diskURI: /subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/disks/wanderlust-AzureDisk 
