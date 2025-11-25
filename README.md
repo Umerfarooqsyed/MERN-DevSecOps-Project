@@ -4,6 +4,18 @@ Production-Grade DevOps Workflow on a Real MERN Application
 
 ---
 
+## 📌 About the Application
+
+**Wanderlust** is a MERN-based travel exploration application originally developed by **Krishna Acharyaa**.
+
+👉 **Original Repository:**  
+[krishnaacharyaa/wanderlust](https://github.com/krishnaacharyaa/wanderlust/)
+
+I did **NOT** develop the application.  
+My contribution is **complete DevOps implementation from scratch**—turning a normal MERN project into a **fully automated, secure, containerized, and GitOps-driven production-ready system**.
+
+---
+
 ## 🧩 Tech Stack & Tools Used
 
 | Category | Tools / Technologies |
