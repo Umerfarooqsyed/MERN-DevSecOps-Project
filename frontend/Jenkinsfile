@@ -25,6 +25,9 @@ pipeline{
       }
     }
     stage('SonarQube Static Code Analysis'){
+      environment{
+        SONAR_HOME = tool "Sonar"
+      }
       steps{
         script{
           sonarQubeCodeAnalysis("MySonarServer","frontend","frontend")
