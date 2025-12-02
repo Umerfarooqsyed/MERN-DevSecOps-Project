@@ -1,6 +1,6 @@
 @Library('Shared') _
 pipeline{
-  agent any
+  agent { label 'azureuser'}
 
   stages{
     stage('Cleaning workspace'){
@@ -20,14 +20,14 @@ pipeline{
     stage('OWASP dependency check'){
       steps{
         script{
-          owaspDependencyCheck("frontend")
+          owaspDependencyCheck()
         }
       }
     }
     stage('SonarQube Static Code Analysis'){
       steps{
         script{
-          sonarQubeCodeAnalysis("nodejs","frontend","frontend","<PUT SONAR SERVER URL HERE>")
+          sonarQubeCodeAnalysis("MySonarServer","frontend","frontend")
         }
       }
     }
@@ -41,7 +41,7 @@ pipeline{
     stage('trivyFsScan'){
       steps{
         script{
-          trivyFsScan("frontend","frontend-trivyfs-report.json")
+          trivyFsScan()
         }
       }
     }
