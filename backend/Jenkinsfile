@@ -1,6 +1,6 @@
 @Library('Shared') _
 pipeline{
-  agent any
+  agent { label 'azureuser'}
 
   stages{
     stage('Cleaning workspace'){
@@ -20,14 +20,17 @@ pipeline{
     stage('OWASP dependency check'){
       steps{
         script{
-          owaspDependencyCheck("frontend")
+          owaspDependencyCheck()
         }
       }
     }
     stage('SonarQube Static Code Analysis'){
+      environment{
+        SONAR_HOME = tool "Sonar"
+      }
       steps{
         script{
-          sonarQubeCodeAnalysis("nodejs","frontend","frontend","<PUT SONAR SERVER URL HERE>")
+          sonarQubeCodeAnalysis("MySonarServer","backend","backend")
         }
       }
     }
@@ -41,7 +44,7 @@ pipeline{
     stage('trivyFsScan'){
       steps{
         script{
-          trivyFsScan("backend","backend-trivyfs-report.json")
+          trivyFsScan()
         }
       }
     }
@@ -65,12 +68,12 @@ pipeline{
         GIT_USER_NAME= "Umerfarooqsyed"
         GIT_USER_EMAIL= "umerfarooqsyed18@gmail.com"
         GIT_REPO_NAME= "MERN-DevSecOps-Project"
-        LATEST_IMAGE= "umerfarooqsyed/mern-devsecops-project:frontend-Version-${env.BUILD_NUMBER}"
+        LATEST_IMAGE= "umerfarooqsyed/mern-devsecops-project:backend-Version-${env.BUILD_NUMBER}"
     }
       steps{
         sh '''
         chmod +x /scripts/update-k8s-manifest.sh
-        ./update-k8s-manifest.sh backend
+        ./update-k8s-manifest.sh frontend
         '''
       }
     }
